@@ -16,7 +16,8 @@ export default function VideoPlatform() {
             <Col md={8} className="d-flex align-items-center justify-content-end gap-4">
               <Form.Control type="email" placeholder="email" className="w-25" />
               <Form.Control type="password" placeholder="password" className="w-25" />
-              <Button variant="primary">Login / Register</Button>
+              <Button variant="primary">Login</Button>
+              <Button variant="secondary">Register</Button>
             </Col>
           </Row>
         </Container>

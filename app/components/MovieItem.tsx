@@ -1,5 +1,5 @@
-import { Button, Card, Form, Container, Row, Col } from 'react-bootstrap';
-import { ThumbsUp, ThumbsDown, Play, Volume2, Maximize2, House } from 'lucide-react';
+import { Card, Row, Col } from 'react-bootstrap';
+import { ThumbsUp, ThumbsDown } from 'lucide-react';
 
 const MovieItem = () => {
   return (
