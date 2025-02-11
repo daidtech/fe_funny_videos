@@ -8,7 +8,7 @@ const MovieItem = () => {
         <Card.Body className="p-4">
           <Row className="">
             {/* Video Player */}
-            <Col md={6} className="bg-secondary rounded">
+            <Col md={6} className="bg-secondary rounded" style={{ minHeight: '200px' }}>
               {/* Video controls can be added here */}
             </Col>
 
