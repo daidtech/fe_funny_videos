@@ -47,8 +47,10 @@ const Header = () => {
       <Container className="py-4">
         <Row className="align-items-center justify-content-between">
           <Col md={4} className="d-flex align-items-center gap-2 mb-4 mb-md-0">
-            <House className="h-6 w-6" />
-            <h1 className="h4 font-weight-bold mb-0">Funny Movies</h1>
+            <Link href={'/'} className='d-flex align-items-center gap-2'>
+              <House className="h-6 w-6" />
+              <h1 className="h4 font-weight-bold mb-0">Funny Movies</h1>
+            </Link>
           </Col>
             <Col md={8} className="d-flex align-items-center justify-content-end gap-4">
               <>
@@ -56,7 +58,7 @@ const Header = () => {
                   currentUser?.id ? (
                     <>
                       <h4 className='mb-0'>Welcome {currentUser?.email}</h4>
-                      <Link href={'/share'} className="btn-primary">Share a movie</Link>
+                      <Link href={'/share'} className="btn btn-primary">Share a movie</Link>
                       <Button variant="danger" onClick={() => handleLogout()}>Logout</Button>
                     </>
                   ) : (
