@@ -3,6 +3,7 @@ import { Button, Form, Container, Row, Col } from 'react-bootstrap';
 import { House } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { getCurrentUser, login, logout, register } from '../services/authService';
+import Link from 'next/link';
 
 const Header = () => {
   const [email, setEmail] = useState('');
@@ -55,7 +56,7 @@ const Header = () => {
                   currentUser?.id ? (
                     <>
                       <h4 className='mb-0'>Welcome {currentUser?.email}</h4>
-                      <Button variant="primary">ShareVideo</Button>
+                      <Link href={'/share'} className="btn-primary">Share a movie</Link>
                       <Button variant="danger" onClick={() => handleLogout()}>Logout</Button>
                     </>
                   ) : (

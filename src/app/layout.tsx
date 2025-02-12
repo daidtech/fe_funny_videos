@@ -27,7 +27,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} bg-light` }>
         <Header />
-        {children}
+        <div className="min-vh-75">
+          {children}
+        </div>
       </body>
     </html>
   );
