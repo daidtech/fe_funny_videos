@@ -1,6 +1,6 @@
 'use client'
 
-import FunnyMovies from "./components/ListMovie";
+import FunnyMovies from "../components/ListMovie";
 
 export default function Home() {
   return (
