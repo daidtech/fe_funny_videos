@@ -16,21 +16,21 @@ const Header = () => {
   }
 
   const handleLogin = () => {
-    login(email, password).then((res) => {
+    login(email, password).then(() => {
       fetchCurrentUser();
-    }).catch((err) => {});
+    }).catch((err) => { console.log(err) });
   }
 
   const handleRegister = () => {
     register(email, password).then((res) => {
       console.log(res);
-    }).catch((err) => {});
+    }).catch((err) => { console.log(err) });
   }
   const handleLogout = () => {
     logout().then((res) => {
       console.log(res);
       setCurrentUser(null);
-    }).catch((err) => {});
+    }).catch((err) => { console.log(err) });
   }
 
   useEffect(() => {

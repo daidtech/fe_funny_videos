@@ -14,6 +14,7 @@ export const getCurrentUser = async () => {
     }
     return ''
   } catch (error) {
+    console.log(error);
     throw new Error('Lỗi xảy ra');
   }
 };
@@ -37,6 +38,7 @@ export const register = async (email: string, password: string) => {
   try {
     const response = await httpClientWithoutVersion.post('/users', { user: {email, password} });
     return response.data;
+  /* eslint-disable  @typescript-eslint/no-explicit-any */
   } catch (error: any) {
     throw new Error(error?.response?.data.status.error);
   }
@@ -48,11 +50,9 @@ export const logout = async () => {
     if (token) {
       await httpClientWithoutVersion.delete('/users/sign_out', {headers: { "Authorization": `Bearer ${token}`}});
       Cookies.remove('token');
-    } else {
-
     }
-
   } catch (error) {
+    console.log(error);
     throw new Error('Lôĩ xảy ra');
   }
 };
