@@ -55,11 +55,11 @@ const Header = () => {
             <Col md={8} className="d-flex align-items-center justify-content-end gap-4">
               <>
                 {
-                  //Todo: fix ts-ignore
-                  // @ts-ignore
+
+                  // @ts-expect-error //Todo: fix ts-ignore
                   currentUser?.id ? (
                     <>
-                        {/* @ts-ignore */}
+                        {/* @ts-expect-error //Todo: fix ts-ignore*/}
                         <h4 className='mb-0'>Welcome {currentUser?.email}</h4>
                       <Link href={'/share'} className="btn btn-primary">Share a movie</Link>
                       <Button variant="danger" onClick={() => handleLogout()}>Logout</Button>
