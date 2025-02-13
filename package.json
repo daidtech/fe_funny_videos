@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@rails/actioncable": "^8.0.100",
     "@types/js-cookie": "^3.0.6",
+    "@types/rails__actioncable": "^6.1.11",
     "axios": "^1.7.9",
     "bootstrap": "^5.3.3",
     "js-cookie": "^3.0.5",
