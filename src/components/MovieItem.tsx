@@ -1,3 +1,4 @@
+'use client'
 import { Card, Row, Col } from 'react-bootstrap';
 import { ThumbsUp, ThumbsDown } from 'lucide-react';
 import { Video } from '../models/video';

@@ -9,7 +9,6 @@ const Header = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [currentUser, setCurrentUser] = useState(null);
-
   const fetchCurrentUser = async () => {
     await getCurrentUser().then((res) => {
       setCurrentUser(res);
@@ -38,10 +37,6 @@ const Header = () => {
     fetchCurrentUser();
   }, []);
 
-  useEffect(() => {
-    console.log('currentUser', currentUser)
-  }, [currentUser]);
-
   return (
     <header className="border-bottom">
       <Container className="py-4">
@@ -55,12 +50,11 @@ const Header = () => {
             <Col md={8} className="d-flex align-items-center justify-content-end gap-4">
               <>
                 {
-
                   // @ts-expect-error //Todo: fix ts-ignore
                   currentUser?.id ? (
                     <>
-                        {/* @ts-expect-error //Todo: fix ts-ignore*/}
-                        <h4 className='mb-0'>Welcome {currentUser?.email}</h4>
+                      {/* @ts-expect-error //Todo: fix ts-ignore*/}
+                      <h4 className='mb-0'>Welcome {currentUser?.email}</h4>
                       <Link href={'/share'} className="btn btn-primary">Share a movie</Link>
                       <Button variant="danger" onClick={() => handleLogout()}>Logout</Button>
                     </>

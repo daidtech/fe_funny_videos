@@ -1,5 +1,5 @@
 'use client'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Button, Card, Col, Container, Form, Row } from "react-bootstrap"
 import { createVideo } from "../services/videoService"
 import { toast } from "react-toastify"
@@ -24,6 +24,10 @@ const ShareVideo = () => {
     setTitle("");
     setDescription("");
   }
+
+  useEffect(() => {
+    console.log("ShareVideo mounted!");
+  }, [])
 
   return (
     <Container className="mt-5">

@@ -36,8 +36,9 @@ export default function ListMovie() {
 
   useEffect(() => {
     fetchVideos();
-    showPopupNotification()
-  }, [])
+    showPopupNotification();
+    console.log('ListMovie mounted!');
+  }, []);
 
   return (
     <Container className="py-5">
