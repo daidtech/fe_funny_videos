@@ -10,7 +10,7 @@ const ShareVideo = () => {
   const [description, setDescription] = useState<string>("")
 
   const handleShare = () => {
-    createVideo({youtube_video_hash: youtubeUrl, title, description}).then((response) => {
+    createVideo({youtube_video_hash: youtubeUrl, title, description}).then(() => {
       cleanForm();
       toast.success('Video shared successfully');
     }).catch((err) => {
