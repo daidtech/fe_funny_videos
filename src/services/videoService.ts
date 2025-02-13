@@ -15,3 +15,13 @@ export const createVideo = async ({youtube_video_hash, title, description}: Vide
     throw new Error(error?.response?.data.status.error);
   }
 }
+
+export const getVideos = async () => {
+  try {
+    const response = await httpClient.get('/videos');
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    throw new Error('Error fetching videos');
+  }
+}
