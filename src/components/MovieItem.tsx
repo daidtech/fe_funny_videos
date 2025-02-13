@@ -1,21 +1,28 @@
 import { Card, Row, Col } from 'react-bootstrap';
 import { ThumbsUp, ThumbsDown } from 'lucide-react';
+import { Video } from '../models/video';
 
-const MovieItem = () => {
+type MovieItemProps = {
+  video: Video
+}
+
+const MovieItem = ({video}: MovieItemProps) => {
   return (
-    <Col md={6}>
+    <Col md={8} className="mx-auto">
       <Card className="mb-4">
         <Card.Body className="p-4">
           <Row className="">
             {/* Video Player */}
-            <Col md={6} className="bg-secondary rounded" style={{ minHeight: '200px' }}>
-              {/* Video controls can be added here */}
+            <Col md={6} className='d-flex justify-content-center' style={{ minHeight: '250px' }}>
+              <iframe src={`https://www.youtube.com/embed/${video.youtube_video_hash}`}
+                title={video.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin" allowFullScreen className='w-100'></iframe>
             </Col>
 
             {/* Video Info */}
             <Col md={6} className="space-y-2">
-              <h2 className="h5 font-weight-bold text-danger">Movie Title</h2>
-              <p className="text-muted">Shared by: someone@gmail.com</p>
+              <h2 className="h5 font-weight-bold text-danger">{video.title}</h2>
+              <p className="text-muted">Shared by: {video.shared_by}</p>
               <div className="d-flex align-items-center gap-4">
                   <div className="d-flex align-items-center gap-1">
                   <ThumbsUp className="h-4 w-4" style={{ cursor: 'not-allowed' }} />
@@ -27,8 +34,7 @@ const MovieItem = () => {
                 </div>
               </div>
               <p className="text-muted">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
-                labore et dolore magna aliqua.
+                {video.description}
               </p>
             </Col>
           </Row>

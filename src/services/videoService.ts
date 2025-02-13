@@ -1,10 +1,5 @@
+import { Video } from "../models/video";
 import httpClient from "./httpClient";
-
-export type Video = {
-  youtube_video_hash: string;
-  title: string;
-  description: string;
-}
 
 export const createVideo = async ({youtube_video_hash, title, description}: Video ) => {
   try {

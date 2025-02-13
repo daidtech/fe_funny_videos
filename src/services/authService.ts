@@ -15,7 +15,7 @@ export const getCurrentUser = async () => {
     return ''
   } catch (error) {
     console.log(error);
-    throw new Error('Lỗi xảy ra');
+    throw new Error('Error getting current user');
   }
 };
 
@@ -27,9 +27,9 @@ export const login = async (email: string, password: string) => {
     return response.data;
   } catch (error: any) {
     if(error.response.status==401) {
-      throw new Error('Email hoặc mật khẩu không đúng');
+      throw new Error('Email or password is incorrect');
     } else {
-      throw new Error("Hệ thống quá tải, vui lòng thử lại sau");
+      throw new Error("Error logging in");
     }
   }
 };
@@ -53,6 +53,6 @@ export const logout = async () => {
     }
   } catch (error) {
     console.log(error);
-    throw new Error('Lôĩ xảy ra');
+    throw new Error('Error logging out');
   }
 };

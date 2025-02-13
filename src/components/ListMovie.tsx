@@ -8,22 +8,28 @@ import { toast } from 'react-toastify';
 export default function ListMovie() {
   const [videos, setVideos] = useState([]);
 
-  useEffect(() => {
-    getVideos().then((res) => {
+  const fetchVideos = async () => {
+    await getVideos().then((res) => {
       setVideos(res);
       console.log(res);
     }).catch((err) => {
       console.log(err)
       toast.error('Error fetching videos');
     });
+  }
+
+  useEffect(() => {
+    fetchVideos();
   }, [])
 
   return (
     <Container className="py-5">
       <Row>
-        {[1, 2, 3].map((index) => (
-          <MovieItem key={index} />
-        ))}
+        {
+          videos.length>0 ? videos.map((video: any) => (
+            <MovieItem key={video.id} video={video} />
+          )) : <p>No videos found</p>
+        }
       </Row>
     </Container>
   );
