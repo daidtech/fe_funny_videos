@@ -8,12 +8,12 @@ type MovieItemProps = {
 
 const MovieItem = ({video}: MovieItemProps) => {
   return (
-    <Col md={8} className="mx-auto">
+    <Col md={6}>
       <Card className="mb-4">
         <Card.Body className="p-4">
           <Row className="">
             {/* Video Player */}
-            <Col md={6} className='d-flex justify-content-center' style={{ minHeight: '250px' }}>
+            <Col md={6} className='d-flex justify-content-center' style={{ minHeight: '200px' }}>
               <iframe src={`https://www.youtube.com/embed/${video.youtube_video_hash}`}
                 title={video.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerPolicy="strict-origin-when-cross-origin" allowFullScreen className='w-100'></iframe>
