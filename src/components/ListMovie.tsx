@@ -4,6 +4,11 @@ import MovieItem from './MovieItem';
 import { useEffect, useState } from 'react';
 import { getVideos } from '../services/videoService';
 import { toast } from 'react-toastify';
+import Cookies from 'js-cookie';
+import { createConsumer } from "@rails/actioncable";
+
+const token = Cookies.get('token');
+const cable = token ? createConsumer(`ws://localhost:3000/cable?token=${token}`) : null;
 
 export default function ListMovie() {
   const [videos, setVideos] = useState([]);
@@ -18,8 +23,20 @@ export default function ListMovie() {
     });
   }
 
+  const showPopupNotification = () => {
+    if(cable) {
+      cable.subscriptions.create("NotificationsChannel", {
+        received(data) {
+          toast(`${data.sender} shared a new video: "${data.title}"`)
+          fetchVideos();
+        },
+      });
+    }
+  }
+
   useEffect(() => {
     fetchVideos();
+    showPopupNotification()
   }, [])
 
   return (
