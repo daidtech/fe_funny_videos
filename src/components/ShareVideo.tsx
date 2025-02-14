@@ -9,8 +9,18 @@ const ShareVideo = () => {
   const [title, setTitle] = useState<string>("")
   const [description, setDescription] = useState<string>("")
 
+  const getVideoId = (url: string) => {
+    const urlParams = new URLSearchParams(new URL(url).search);
+    return urlParams.get('v') ? urlParams.get('v') : '';
+  }
+
   const handleShare = () => {
-    createVideo({youtube_video_hash: youtubeUrl, title, description}).then(() => {
+    const youtubeId = getVideoId(youtubeUrl);
+    if(!youtubeId) {
+      toast.error('Invalid Youtube URL');
+      return;
+    }
+    createVideo({youtube_video_hash: youtubeId, title, description}).then(() => {
       cleanForm();
       toast.success('Video shared successfully');
     }).catch((err) => {
