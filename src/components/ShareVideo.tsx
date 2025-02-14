@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { Button, Card, Col, Container, Form, Row } from "react-bootstrap"
 import { createVideo } from "../services/videoService"
 import { toast } from "react-toastify"
