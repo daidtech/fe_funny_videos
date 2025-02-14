@@ -8,7 +8,8 @@ import Cookies from 'js-cookie';
 import { createConsumer } from "@rails/actioncable";
 
 const token = Cookies.get('token');
-const cable = token ? createConsumer(`wss://${process.env.NEXT_PUBLIC_ORIGIN_CABLE}/cable?token=${token}`) : null;
+const connectSocket = process.env.NEXT_PUBLIC_ENVIRONMENT === 'development' ? 'ws' : 'wss';
+const cable = token ? createConsumer(`${connectSocket}://${process.env.NEXT_PUBLIC_ORIGIN_CABLE}/cable?token=${token}`) : null;
 export default function ListMovie() {
   const [videos, setVideos] = useState([]);
 

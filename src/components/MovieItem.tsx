@@ -34,9 +34,9 @@ const MovieItem = ({video}: MovieItemProps) => {
                   <span>12</span>
                 </div>
               </div>
-              <p className="text-muted">
-                {video.description}
-              </p>
+                <p className="text-muted">
+                  {video.description.length > 150 ? `${video.description.substring(0, 150)}...` : video.description}
+                </p>
             </Col>
           </Row>
         </Card.Body>

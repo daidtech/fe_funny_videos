@@ -4,11 +4,13 @@ import { House } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { getCurrentUser, login, logout, register } from '../services/authService';
 import Link from 'next/link';
+import { toast } from 'react-toastify';
 
 const Header = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [currentUser, setCurrentUser] = useState(null);
+
   const fetchCurrentUser = async () => {
     await getCurrentUser().then((res) => {
       setCurrentUser(res);
@@ -18,13 +20,18 @@ const Header = () => {
   const handleLogin = () => {
     login(email, password).then(() => {
       fetchCurrentUser();
-    }).catch((err) => { console.log(err) });
+    }).catch((err) => {
+      toast.error(err.toString());
+    });
   }
 
   const handleRegister = () => {
     register(email, password).then((res) => {
       console.log(res);
-    }).catch((err) => { console.log(err) });
+      handleLogin();
+    }).catch((err) => {
+      toast.error(err.toString());
+    });
   }
   const handleLogout = () => {
     logout().then((res) => {
