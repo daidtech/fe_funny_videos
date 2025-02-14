@@ -5,16 +5,24 @@ import { createVideo } from "../services/videoService"
 import { toast } from "react-toastify"
 
 const ShareVideo = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const [youtubeUrl, setYoutubeUrl] = useState<string>("")
   const [title, setTitle] = useState<string>("")
   const [description, setDescription] = useState<string>("")
 
   const getVideoId = (url: string) => {
-    const urlParams = new URLSearchParams(new URL(url).search);
-    return urlParams.get('v') ? urlParams.get('v') : '';
+    try {
+      const urlParams = new URLSearchParams(new URL(url).search);
+      return urlParams.get('v') ? urlParams.get('v') : '';
+    } catch (error) {
+      toast.error('Invalid Youtube URL format');
+      setIsLoading(false);
+      return '';
+    }
   }
 
   const handleShare = () => {
+    setIsLoading(true);
     const youtubeId = getVideoId(youtubeUrl);
     if(!youtubeId) {
       toast.error('Invalid Youtube URL');
@@ -23,7 +31,9 @@ const ShareVideo = () => {
     createVideo({youtube_video_hash: youtubeId, title, description}).then(() => {
       cleanForm();
       toast.success('Video shared successfully');
+      setIsLoading(false);
     }).catch((err) => {
+      setIsLoading(false);
       console.log(err);
       toast.error('Error sharing video');
     });
@@ -79,9 +89,9 @@ const ShareVideo = () => {
                   rows={2}
                   />
                 </div>
-              <Button className="w-100" onClick={handleShare} disabled={!youtubeUrl}>
-                Share
-              </Button>
+                <Button className="w-100" onClick={handleShare} disabled={!youtubeUrl || isLoading}>
+                {isLoading ? <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> : 'Share'}
+                </Button>
             </Card.Body>
           </Card>
         </Col>
