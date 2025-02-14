@@ -35,7 +35,7 @@ const MovieItem = ({video}: MovieItemProps) => {
                 </div>
               </div>
                 <p className="text-muted">
-                  {video.description.length > 110 ? `${video.description.substring(0, 110)}...` : video.description}
+                  {video.description.length > 90 ? `${video.description.substring(0, 90)}...` : video.description}
                 </p>
             </Col>
           </Row>
