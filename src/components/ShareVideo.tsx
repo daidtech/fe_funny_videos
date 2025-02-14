@@ -25,10 +25,6 @@ const ShareVideo = () => {
     setDescription("");
   }
 
-  useEffect(() => {
-    console.log("ShareVideo mounted!");
-  }, [])
-
   return (
     <Container className="mt-5">
       <Row>

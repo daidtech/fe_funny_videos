@@ -37,7 +37,6 @@ export default function ListMovie() {
   useEffect(() => {
     fetchVideos();
     showPopupNotification();
-    console.log('ListMovie mounted!');
   }, []);
 
   return (
