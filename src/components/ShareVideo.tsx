@@ -16,6 +16,7 @@ const ShareVideo = () => {
       return urlParams.get('v') ? urlParams.get('v') : '';
     } catch (error) {
       toast.error('Invalid Youtube URL format');
+      console.log('error', error)
       setIsLoading(false);
       return '';
     }
